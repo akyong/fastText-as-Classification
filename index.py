@@ -14,11 +14,10 @@ def getSizeVector(word):
 def downloadModel():
     fasttext.util.download_model('id', if_exists='ignore')
 
-
 # fastText Start!
 # todo download word vector model dalam bahasa indonesia
 downloadModel()
-model = fasttext.load_model("cc.id.300.bin")
+model = fasttext.load_model("/Users/bobbyakyong/Projects/python/fastText/bobby/cc.id.300.bin")
 
 # getSizeVector('suka')
 # getWordVector('suka')
@@ -30,9 +29,9 @@ model = fasttext.load_model("cc.id.300.bin")
 #     print(teks.format(no, x))
 #     no+=1
 
+data = '/Users/bobbyakyong/Projects/python/fastText/bobby/data/10ribu.csv'
 
-
-news = pd.read_csv('/Users/bobbyakyong/Projects/python/fastText/bobby/50data2Column.csv',delimiter=',', header=None)
+news = pd.read_csv(data, delimiter=',', header=None)
 # cols = ['id','title','source','category','link','text']
 news.columns = ['category','text']
 
@@ -42,5 +41,7 @@ news['category']=['__label__'+s.replace(' or ', '$').replace(', or ','$').replac
 
 news['text']= news['text'].replace('\n',' ', regex=True).replace('\t',' ', regex=True)
 #news['text']=news['text'][1:-1]
-news.to_csv('labeledData.csv',index=False)
+news.to_csv('data/10ribuLabeled.csv',index=False)
+
 print(news)
+
