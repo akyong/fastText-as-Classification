@@ -7,6 +7,9 @@ news = pd.read_csv(data, delimiter=',', header=None)
 
 model = fasttext.load_model("/Users/bobbyakyong/Projects/python/fastText/bobby/cc.id.300.bin")
 
+# notes
+# https://stackoverflow.com/questions/54181163/fasttext-embeddings-sentence-vectors/56289476#56289476
+# get_sentence_vector bukan hanya menggabungkan hasil get_word_vector namun juga dirata-ratakan kemudian di norm
 
 print(news[1][0])
 # result
